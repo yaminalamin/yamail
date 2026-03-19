@@ -8,47 +8,51 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --bg:#08090b;
-  --surface:#0f1013;
-  --surface2:#16181d;
-  --surface3:#1e2128;
-  --border:#252830;
-  --border2:#2e3240;
-  --text:#f0f2f8;
-  --muted:#6b7280;
-  --muted2:#9ca3af;
-  --accent:#a8ff78;
-  --accent2:#78ffd6;
-  --accent-dim:#0f2010;
-  --danger:#ff6b6b;
-  --danger-dim:#200f0f;
-  --info:#60a5fa;
-  --info-dim:#0f1a30;
-  --warn:#fbbf24;
+--bg:#08090b;
+--surface:#0f1013;
+--surface2:#16181d;
+--surface3:#1e2128;
+--border:#252830;
+--border2:#2e3240;
+--text:#f0f2f8;
+--muted:#6b7280;
+--muted2:#9ca3af;
+--accent:#2222cc;
+--accent-light:#4444ff;
+--accent-dim:#0a0a2a;
+--accent-glow:rgba(34,34,204,0.15);
+--danger:#ff6b6b;
+--danger-dim:#200f0f;
+--info:#60a5fa;
+--info-dim:#0f1a30;
+--success:#6ee7b7;
+--success-dim:#0a2018;
 }
 html{scroll-behavior:smooth;}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
 
 /* NAV */
-nav{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 2rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(8,9,11,0.92);backdrop-filter:blur(12px);z-index:100;}
-.logo{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.nav-badge{font-size:11px;padding:3px 10px;border-radius:99px;background:var(--accent-dim);color:var(--accent);font-weight:500;border:1px solid rgba(168,255,120,0.2);}
+nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(8,9,11,0.95);backdrop-filter:blur(16px);z-index:100;}
+.logo{display:flex;align-items:center;gap:10px;}
+.logo img{height:34px;width:auto;object-fit:contain;}
+.logo-text{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;color:var(--text);}
+.nav-badge{font-size:10px;padding:3px 10px;border-radius:99px;background:var(--accent-dim);color:var(--accent-light);font-weight:500;border:1px solid rgba(68,68,255,0.25);}
 
 /* LAYOUT */
-.app{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 61px);}
+.app{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 62px);}
 
 /* SIDEBAR */
-.sidebar{border-right:1px solid var(--border);padding:1.5rem 0;}
+.sidebar{border-right:1px solid var(--border);padding:1.5rem 0;background:var(--surface);}
 .sidebar-section{padding:0 1rem;margin-bottom:0.5rem;}
 .sidebar-label{font-size:10px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;padding:0 0.75rem;margin-bottom:0.5rem;}
 .nav-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;cursor:pointer;font-size:13.5px;color:var(--muted2);transition:all 0.15s;border:none;background:none;width:100%;text-align:left;font-family:'DM Sans',sans-serif;}
 .nav-item:hover{background:var(--surface2);color:var(--text);}
-.nav-item.active{background:var(--surface2);color:var(--accent);border:1px solid rgba(168,255,120,0.15);}
+.nav-item.active{background:var(--accent-dim);color:var(--accent-light);border:1px solid rgba(68,68,255,0.2);}
 .nav-icon{width:16px;height:16px;opacity:0.7;flex-shrink:0;}
 .nav-item.active .nav-icon{opacity:1;}
 
 /* MAIN */
-.main{padding:2rem;overflow-y:auto;max-height:calc(100vh - 61px);}
+.main{padding:2rem;overflow-y:auto;max-height:calc(100vh - 62px);}
 .page{display:none;}
 .page.active{display:block;}
 .page-title{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:700;margin-bottom:0.25rem;}
@@ -56,14 +60,14 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:1.25re
 
 /* CARDS */
 .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1rem;}
-.card-title{font-size:13px;font-weight:600;color:var(--muted2);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:1rem;}
+.card-title{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1rem;}
 
 /* FORM */
 .field{margin-bottom:1rem;}
 .field:last-child{margin-bottom:0;}
 label{display:block;font-size:12px;color:var(--muted);margin-bottom:5px;font-weight:500;}
 input,textarea,select{width:100%;background:var(--surface2);border:1px solid var(--border2);border-radius:9px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:13.5px;padding:10px 13px;outline:none;transition:border 0.15s;}
-input:focus,textarea:focus,select:focus{border-color:var(--accent);}
+input:focus,textarea:focus,select:focus{border-color:var(--accent-light);box-shadow:0 0 0 3px var(--accent-glow);}
 textarea{min-height:90px;resize:vertical;line-height:1.6;}
 select option{background:var(--surface2);}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
@@ -71,27 +75,28 @@ select option{background:var(--surface2);}
 
 /* BUTTONS */
 .btn{padding:9px 18px;font-size:13.5px;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;border-radius:9px;border:1px solid var(--border2);background:var(--surface2);color:var(--text);transition:all 0.15s;}
-.btn:hover{border-color:var(--accent);color:var(--accent);}
-.btn-primary{background:var(--accent);color:#050e05;border-color:var(--accent);font-weight:600;}
-.btn-primary:hover{opacity:0.88;color:#050e05;}
+.btn:hover{border-color:var(--accent-light);color:var(--accent-light);}
+.btn-primary{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600;}
+.btn-primary:hover{background:var(--accent-light);border-color:var(--accent-light);color:#fff;opacity:1;}
 .btn-danger{background:var(--danger-dim);color:var(--danger);border-color:var(--danger);}
 .btn:disabled{opacity:0.35;cursor:not-allowed;}
 .btn-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
 
 /* STATUS */
 .status{font-size:13px;padding:10px 14px;border-radius:9px;margin-top:12px;line-height:1.5;}
-.status.success{background:var(--accent-dim);color:var(--accent);border:1px solid rgba(168,255,120,0.2);}
+.status.success{background:var(--success-dim);color:var(--success);border:1px solid rgba(110,231,183,0.2);}
 .status.error{background:var(--danger-dim);color:var(--danger);border:1px solid rgba(255,107,107,0.2);}
 .status.info{background:var(--info-dim);color:var(--info);border:1px solid rgba(96,165,250,0.2);}
 
 /* SPINNER */
-.spinner{display:inline-block;width:13px;height:13px;border:2px solid rgba(5,14,5,0.3);border-top-color:#050e05;border-radius:50%;animation:spin 0.7s linear infinite;vertical-align:middle;margin-right:6px;}
+.spinner{display:inline-block;width:13px;height:13px;border:2px solid rgba(255,255,255,0.2);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite;vertical-align:middle;margin-right:6px;}
 @keyframes spin{to{transform:rotate(360deg);}}
 
 /* STATS */
 .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:1.5rem;}
-.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;}
-.stat-value{font-family:'Syne',sans-serif;font-size:2rem;font-weight:700;color:var(--accent);}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;position:relative;overflow:hidden;}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent-light));}
+.stat-value{font-family:'Syne',sans-serif;font-size:2rem;font-weight:700;color:var(--accent-light);}
 .stat-label{font-size:12px;color:var(--muted);margin-top:4px;}
 
 /* TABLE */
@@ -102,679 +107,513 @@ td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted2);}
 tr:last-child td{border-bottom:none;}
 tr:hover td{background:var(--surface2);color:var(--text);}
 .badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:99px;font-weight:500;}
-.badge-success{background:var(--accent-dim);color:var(--accent);}
+.badge-success{background:var(--success-dim);color:var(--success);}
 .badge-error{background:var(--danger-dim);color:var(--danger);}
 .badge-info{background:var(--info-dim);color:var(--info);}
 
 /* UPLOAD */
 .upload-zone{border:2px dashed var(--border2);border-radius:12px;padding:2.5rem;text-align:center;cursor:pointer;transition:all 0.2s;}
-.upload-zone:hover,.upload-zone.dragover{border-color:var(--accent);background:var(--accent-dim);}
+.upload-zone:hover,.upload-zone.dragover{border-color:var(--accent-light);background:var(--accent-dim);}
 .upload-icon{font-size:2rem;margin-bottom:0.75rem;opacity:0.5;}
 .upload-text{font-size:14px;color:var(--muted2);}
 .upload-sub{font-size:12px;color:var(--muted);margin-top:4px;}
 
 /* PROGRESS */
-.progress-bar{height:6px;background:var(--surface3);border-radius:99px;overflow:hidden;margin-top:12px;}
-.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:99px;transition:width 0.3s;width:0%;}
+.progress-bar{height:4px;background:var(--surface3);border-radius:99px;overflow:hidden;margin-top:12px;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-light));border-radius:99px;transition:width 0.3s;width:0%;}
 
 /* TEMPLATE */
 .template-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;margin-bottom:0.75rem;cursor:pointer;transition:all 0.15s;}
-.template-card:hover{border-color:var(--accent);background:var(--surface2);}
-.template-card.selected{border-color:var(--accent);background:var(--accent-dim);}
+.template-card:hover{border-color:var(--accent-light);background:var(--surface2);}
 .template-name{font-size:14px;font-weight:500;margin-bottom:4px;}
 .template-preview{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 
-/* DIVIDER */
 hr.div{border:none;border-top:1px solid var(--border);margin:1.5rem 0;}
-
-/* MONO */
 .mono{font-family:'DM Mono',monospace;font-size:12px;}
 
 @media(max-width:768px){
-  .app{grid-template-columns:1fr;}
-  .sidebar{display:none;}
-  .stats-grid{grid-template-columns:1fr 1fr;}
-  .row2,.row3{grid-template-columns:1fr;}
+.app{grid-template-columns:1fr;}
+.sidebar{display:none;}
+.stats-grid{grid-template-columns:1fr 1fr;}
+.row2,.row3{grid-template-columns:1fr;}
 }
 </style>
 </head>
 <body>
-
 <nav>
-  <span class="logo">YaMail</span>
+  <div class="logo">
+    <img src="https://yaminalamin.com/wp-content/uploads/2026/03/Yamin.-1.png.webp" alt="Yamin Al Amin" onerror="this.style.display='none';document.querySelector('.logo-text').style.display='block'"/>
+    <span class="logo-text" style="display:none;">YaMail</span>
+  </div>
   <span class="nav-badge">Free Forever</span>
 </nav>
 
 <div class="app">
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <div class="sidebar-section">
-      <div class="sidebar-label">Main</div>
-      <button class="nav-item active" onclick="showPage('dashboard')">
-        <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-        Dashboard
-      </button>
-      <button class="nav-item" onclick="showPage('send')">
-        <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
-        Send Emails
-      </button>
-      <button class="nav-item" onclick="showPage('subscribers')">
-        <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-        Subscribers
-      </button>
-      <button class="nav-item" onclick="showPage('templates')">
-        <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-        Templates
-      </button>
-      <button class="nav-item" onclick="showPage('logs')">
-        <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
-        Logs
-      </button>
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-label">Main</div>
+    <button class="nav-item active" onclick="showPage('dashboard')">
+      <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+      Dashboard
+    </button>
+    <button class="nav-item" onclick="showPage('send')">
+      <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+      Send Emails
+    </button>
+    <button class="nav-item" onclick="showPage('subscribers')">
+      <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+      Subscribers
+    </button>
+    <button class="nav-item" onclick="showPage('templates')">
+      <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+      Templates
+    </button>
+    <button class="nav-item" onclick="showPage('logs')">
+      <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+      Logs
+    </button>
+  </div>
+  <div class="sidebar-section" style="margin-top:1rem;">
+    <div class="sidebar-label">Config</div>
+    <button class="nav-item" onclick="showPage('settings')">
+      <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+      Settings
+    </button>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+
+<!-- DASHBOARD -->
+<div class="page active" id="page-dashboard">
+  <div class="page-title">Dashboard</div>
+  <div class="page-sub">Welcome to YaMail — your free AI email marketing platform.</div>
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-value" id="stat-subscribers">0</div><div class="stat-label">Subscribers</div></div>
+    <div class="stat-card"><div class="stat-value" id="stat-sent">0</div><div class="stat-label">Emails Sent</div></div>
+    <div class="stat-card"><div class="stat-value" id="stat-templates">0</div><div class="stat-label">Templates</div></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Quick Send</div>
+    <div class="row2">
+      <div class="field"><label>Recipient Name</label><input type="text" id="qs-name" placeholder="e.g. Karim"/></div>
+      <div class="field"><label>Recipient Email</label><input type="email" id="qs-email" placeholder="name@gmail.com"/></div>
     </div>
-    <div class="sidebar-section" style="margin-top:1rem;">
-      <div class="sidebar-label">Config</div>
-      <button class="nav-item" onclick="showPage('settings')">
-        <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
-        Settings
-      </button>
+    <div class="field"><label>What is this email about?</label><textarea id="qs-topic" placeholder="e.g. Welcome to my newsletter! Check out my latest YouTube video."></textarea></div>
+    <div class="btn-row">
+      <button class="btn" onclick="quickGenerate()">Generate Preview</button>
+      <button class="btn btn-primary" onclick="quickSend()">Generate + Send</button>
     </div>
-  </aside>
-
-  <!-- MAIN -->
-  <main class="main">
-
-    <!-- DASHBOARD -->
-    <div class="page active" id="page-dashboard">
-      <div class="page-title">Dashboard</div>
-      <div class="page-sub">Welcome to YaMail — your free AI email marketing platform.</div>
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-value" id="stat-subscribers">0</div>
-          <div class="stat-label">Subscribers</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value" id="stat-sent">0</div>
-          <div class="stat-label">Emails Sent</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value" id="stat-templates">0</div>
-          <div class="stat-label">Templates</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-title">Quick Send</div>
-        <div class="row2">
-          <div class="field">
-            <label>Recipient Name</label>
-            <input type="text" id="qs-name" placeholder="e.g. Karim"/>
-          </div>
-          <div class="field">
-            <label>Recipient Email</label>
-            <input type="email" id="qs-email" placeholder="name@gmail.com"/>
-          </div>
-        </div>
-        <div class="field">
-          <label>What is this email about?</label>
-          <textarea id="qs-topic" placeholder="e.g. Welcome to my newsletter! Check out my latest YouTube video."></textarea>
-        </div>
-        <div class="btn-row">
-          <button class="btn" onclick="quickGenerate()">Generate Preview</button>
-          <button class="btn btn-primary" onclick="quickSend()">Generate + Send</button>
-        </div>
-        <div id="qs-status"></div>
-        <div id="qs-preview" style="display:none;margin-top:1rem;">
-          <hr class="div" style="margin:1rem 0;"/>
-          <label style="margin-bottom:6px;">Subject</label>
-          <div class="mono" id="qs-subject" style="background:var(--surface2);border:1px solid var(--border2);border-radius:8px;padding:10px 13px;margin-bottom:12px;color:var(--text);"></div>
-          <label style="margin-bottom:6px;">Body</label>
-          <div class="mono" id="qs-body" style="background:var(--surface2);border:1px solid var(--border2);border-radius:8px;padding:10px 13px;color:var(--text);white-space:pre-wrap;font-size:13px;line-height:1.7;"></div>
-          <div style="margin-top:12px;">
-            <button class="btn btn-primary" onclick="quickSendPreview()" id="qs-send-btn">Send This Email</button>
-          </div>
-          <div id="qs-send-status"></div>
-        </div>
-      </div>
+    <div id="qs-status"></div>
+    <div id="qs-preview" style="display:none;margin-top:1rem;">
+      <hr class="div" style="margin:1rem 0;"/>
+      <label style="margin-bottom:6px;">Subject</label>
+      <div class="mono" id="qs-subject" style="background:var(--surface2);border:1px solid var(--border2);border-radius:8px;padding:10px 13px;margin-bottom:12px;color:var(--text);"></div>
+      <label style="margin-bottom:6px;">Body</label>
+      <div class="mono" id="qs-body" style="background:var(--surface2);border:1px solid var(--border2);border-radius:8px;padding:10px 13px;color:var(--text);white-space:pre-wrap;font-size:13px;line-height:1.7;"></div>
+      <div style="margin-top:12px;"><button class="btn btn-primary" onclick="quickSendPreview()" id="qs-send-btn">Send This Email</button></div>
+      <div id="qs-send-status"></div>
     </div>
+  </div>
+</div>
 
-    <!-- SEND -->
-    <div class="page" id="page-send">
-      <div class="page-title">Send Emails</div>
-      <div class="page-sub">Upload a spreadsheet or use your saved subscribers to send bulk personalized emails.</div>
-
-      <div class="card">
-        <div class="card-title">Import Subscribers</div>
-        <div class="upload-zone" id="upload-zone" onclick="document.getElementById('file-input').click()" ondragover="dragOver(event)" ondragleave="dragLeave(event)" ondrop="dropFile(event)">
-          <div class="upload-icon">📊</div>
-          <div class="upload-text">Drop your Excel or CSV file here</div>
-          <div class="upload-sub">or click to browse — columns: Name, Email, Interest</div>
-        </div>
-        <input type="file" id="file-input" accept=".xlsx,.xls,.csv" style="display:none;" onchange="handleFile(event)"/>
-        <div id="import-status"></div>
-        <div id="imported-preview" style="display:none;margin-top:1rem;">
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>Name</th><th>Email</th><th>Interest</th></tr></thead>
-              <tbody id="imported-table"></tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-title">Campaign</div>
-        <div class="field">
-          <label>Campaign Topic / Offer</label>
-          <textarea id="campaign-topic" placeholder="e.g. Eid Sale — 20% off this weekend! Create urgency and invite them to shop at yaminalamin.com"></textarea>
-        </div>
-        <div class="field">
-          <label>Email Tone</label>
-          <select id="campaign-tone">
-            <option value="friendly and warm">Friendly & Warm</option>
-            <option value="professional and formal">Professional & Formal</option>
-            <option value="casual and fun">Casual & Fun</option>
-            <option value="urgent and persuasive">Urgent & Persuasive</option>
-          </select>
-        </div>
-        <div class="btn-row">
-          <button class="btn btn-primary" onclick="startBulkSend()" id="bulk-btn">Start Bulk Send</button>
-          <span id="bulk-progress" style="font-size:13px;color:var(--muted);"></span>
-        </div>
-        <div class="progress-bar" id="progress-bar" style="display:none;"><div class="progress-fill" id="progress-fill"></div></div>
-        <div id="bulk-status"></div>
-      </div>
+<!-- SEND -->
+<div class="page" id="page-send">
+  <div class="page-title">Send Emails</div>
+  <div class="page-sub">Upload a spreadsheet or use your saved subscribers to send bulk personalized emails.</div>
+  <div class="card">
+    <div class="card-title">Import Subscribers</div>
+    <div class="upload-zone" id="upload-zone" onclick="document.getElementById('file-input').click()" ondragover="dragOver(event)" ondragleave="dragLeave(event)" ondrop="dropFile(event)">
+      <div class="upload-icon">📊</div>
+      <div class="upload-text">Drop your Excel or CSV file here</div>
+      <div class="upload-sub">or click to browse — columns: Name, Email, Interest</div>
     </div>
-
-    <!-- SUBSCRIBERS -->
-    <div class="page" id="page-subscribers">
-      <div class="page-title">Subscribers</div>
-      <div class="page-sub">Manage your subscriber list. Add manually or import from a file.</div>
-      <div class="card">
-        <div class="card-title">Add Subscriber</div>
-        <div class="row3">
-          <div class="field">
-            <label>Name</label>
-            <input type="text" id="sub-name" placeholder="Karim"/>
-          </div>
-          <div class="field">
-            <label>Email</label>
-            <input type="email" id="sub-email" placeholder="karim@gmail.com"/>
-          </div>
-          <div class="field">
-            <label>Interest</label>
-            <input type="text" id="sub-interest" placeholder="tech, fashion..."/>
-          </div>
-        </div>
-        <button class="btn btn-primary" onclick="addSubscriber()">Add Subscriber</button>
-        <div id="sub-status"></div>
-      </div>
-      <div class="card">
-        <div class="card-title">All Subscribers (<span id="sub-count">0</span>)</div>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Name</th><th>Email</th><th>Interest</th><th>Action</th></tr></thead>
-            <tbody id="sub-table"><tr><td colspan="4" style="text-align:center;color:var(--muted);">No subscribers yet</td></tr></tbody>
-          </table>
-        </div>
-      </div>
+    <input type="file" id="file-input" accept=".xlsx,.xls,.csv" style="display:none;" onchange="handleFile(event)"/>
+    <div id="import-status"></div>
+    <div id="imported-preview" style="display:none;margin-top:1rem;">
+      <div class="table-wrap"><table><thead><tr><th>Name</th><th>Email</th><th>Interest</th></tr></thead><tbody id="imported-table"></tbody></table></div>
     </div>
-
-    <!-- TEMPLATES -->
-    <div class="page" id="page-templates">
-      <div class="page-title">Email Templates</div>
-      <div class="page-sub">Save reusable email topics and prompts for quick campaigns.</div>
-      <div class="card">
-        <div class="card-title">New Template</div>
-        <div class="field">
-          <label>Template Name</label>
-          <input type="text" id="tmpl-name" placeholder="e.g. Welcome Email"/>
-        </div>
-        <div class="field">
-          <label>Topic / Prompt</label>
-          <textarea id="tmpl-topic" placeholder="e.g. Welcome new subscriber! Mention my YouTube channel yaminalamin.com and invite them to watch my latest video. Include a warm greeting."></textarea>
-        </div>
-        <button class="btn btn-primary" onclick="saveTemplate()">Save Template</button>
-        <div id="tmpl-status"></div>
-      </div>
-      <div class="card">
-        <div class="card-title">Saved Templates</div>
-        <div id="tmpl-list"><div style="color:var(--muted);font-size:13px;">No templates yet</div></div>
-      </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Campaign</div>
+    <div class="field"><label>Campaign Topic / Offer</label><textarea id="campaign-topic" placeholder="e.g. Eid Sale — 20% off this weekend!"></textarea></div>
+    <div class="field"><label>Email Tone</label>
+      <select id="campaign-tone">
+        <option value="friendly and warm">Friendly & Warm</option>
+        <option value="professional and formal">Professional & Formal</option>
+        <option value="casual and fun">Casual & Fun</option>
+        <option value="urgent and persuasive">Urgent & Persuasive</option>
+      </select>
     </div>
-
-    <!-- LOGS -->
-    <div class="page" id="page-logs">
-      <div class="page-title">Send Logs</div>
-      <div class="page-sub">History of all emails sent through YaMail.</div>
-      <div class="card">
-        <div class="btn-row" style="margin-bottom:1rem;">
-          <button class="btn btn-danger" onclick="clearLogs()">Clear Logs</button>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Time</th><th>Name</th><th>Email</th><th>Subject</th><th>Status</th></tr></thead>
-            <tbody id="log-table"><tr><td colspan="5" style="text-align:center;color:var(--muted);">No logs yet</td></tr></tbody>
-          </table>
-        </div>
-      </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="startBulkSend()" id="bulk-btn">Start Bulk Send</button>
+      <span id="bulk-progress" style="font-size:13px;color:var(--muted);"></span>
     </div>
+    <div class="progress-bar" id="progress-bar" style="display:none;"><div class="progress-fill" id="progress-fill"></div></div>
+    <div id="bulk-status"></div>
+  </div>
+</div>
 
-    <!-- SETTINGS -->
-    <div class="page" id="page-settings">
-      <div class="page-title">Settings</div>
-      <div class="page-sub">Configure your API keys and sender info. Saved permanently in your browser.</div>
-      <div class="card">
-        <div class="card-title">AI Provider</div>
-        <div class="field">
-          <label>OpenRouter API Key <a href="https://openrouter.ai/keys" target="_blank" style="color:var(--accent);font-size:11px;text-decoration:none;">Get free key ↗</a></label>
-          <input type="password" id="cfg-openrouter" placeholder="sk-or-..."/>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-title">Email Sending</div>
-        <div class="field">
-          <label>Resend API Key <a href="https://resend.com" target="_blank" style="color:var(--accent);font-size:11px;text-decoration:none;">resend.com ↗</a></label>
-          <input type="password" id="cfg-resend" placeholder="re_..."/>
-        </div>
-        <div class="row2">
-          <div class="field">
-            <label>Sender Name</label>
-            <input type="text" id="cfg-name" placeholder="Yamin Al Amin"/>
-          </div>
-          <div class="field">
-            <label>Sender Email</label>
-            <input type="email" id="cfg-email" placeholder="hello@yaminalamin.com"/>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-title">Proxy Worker</div>
-        <div class="field">
-          <label>Cloudflare Worker URL</label>
-          <input type="text" id="cfg-worker" placeholder="https://claude-proxy.yaminalamin22.workers.dev"/>
-        </div>
-      </div>
-      <div class="btn-row">
-        <button class="btn btn-primary" onclick="saveSettings()">Save Settings</button>
-        <button class="btn" onclick="clearSettings()">Clear All</button>
-      </div>
-      <div id="cfg-status"></div>
+<!-- SUBSCRIBERS -->
+<div class="page" id="page-subscribers">
+  <div class="page-title">Subscribers</div>
+  <div class="page-sub">Manage your subscriber list. Add manually or import from a file.</div>
+  <div class="card">
+    <div class="card-title">Add Subscriber</div>
+    <div class="row3">
+      <div class="field"><label>Name</label><input type="text" id="sub-name" placeholder="Karim"/></div>
+      <div class="field"><label>Email</label><input type="email" id="sub-email" placeholder="karim@gmail.com"/></div>
+      <div class="field"><label>Interest</label><input type="text" id="sub-interest" placeholder="tech, fashion..."/></div>
     </div>
+    <button class="btn btn-primary" onclick="addSubscriber()">Add Subscriber</button>
+    <div id="sub-status"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">All Subscribers (<span id="sub-count">0</span>)</div>
+    <div class="table-wrap"><table><thead><tr><th>Name</th><th>Email</th><th>Interest</th><th>Action</th></tr></thead><tbody id="sub-table"><tr><td colspan="4" style="text-align:center;color:var(--muted);">No subscribers yet</td></tr></tbody></table></div>
+  </div>
+</div>
 
-  </main>
+<!-- TEMPLATES -->
+<div class="page" id="page-templates">
+  <div class="page-title">Email Templates</div>
+  <div class="page-sub">Save reusable email topics and prompts for quick campaigns.</div>
+  <div class="card">
+    <div class="card-title">New Template</div>
+    <div class="field"><label>Template Name</label><input type="text" id="tmpl-name" placeholder="e.g. Welcome Email"/></div>
+    <div class="field"><label>Topic / Prompt</label><textarea id="tmpl-topic" placeholder="e.g. Welcome new subscriber! Mention my YouTube channel and invite them to watch my latest video."></textarea></div>
+    <button class="btn btn-primary" onclick="saveTemplate()">Save Template</button>
+    <div id="tmpl-status"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Saved Templates</div>
+    <div id="tmpl-list"><div style="color:var(--muted);font-size:13px;">No templates yet</div></div>
+  </div>
+</div>
+
+<!-- LOGS -->
+<div class="page" id="page-logs">
+  <div class="page-title">Send Logs</div>
+  <div class="page-sub">History of all emails sent through YaMail.</div>
+  <div class="card">
+    <div class="btn-row" style="margin-bottom:1rem;"><button class="btn btn-danger" onclick="clearLogs()">Clear Logs</button></div>
+    <div class="table-wrap"><table><thead><tr><th>Time</th><th>Name</th><th>Email</th><th>Subject</th><th>Status</th></tr></thead><tbody id="log-table"><tr><td colspan="5" style="text-align:center;color:var(--muted);">No logs yet</td></tr></tbody></table></div>
+  </div>
+</div>
+
+<!-- SETTINGS -->
+<div class="page" id="page-settings">
+  <div class="page-title">Settings</div>
+  <div class="page-sub">Configure your API keys and sender info. Saved permanently in your browser.</div>
+  <div class="card">
+    <div class="card-title">AI Provider</div>
+    <div class="field"><label>OpenRouter API Key <a href="https://openrouter.ai/keys" target="_blank" style="color:var(--accent-light);font-size:11px;text-decoration:none;">Get free key ↗</a></label><input type="password" id="cfg-openrouter" placeholder="sk-or-..."/></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Email Sending</div>
+    <div class="field"><label>Resend API Key <a href="https://resend.com" target="_blank" style="color:var(--accent-light);font-size:11px;text-decoration:none;">resend.com ↗</a></label><input type="password" id="cfg-resend" placeholder="re_..."/></div>
+    <div class="row2">
+      <div class="field"><label>Sender Name</label><input type="text" id="cfg-name" placeholder="Yamin Al Amin"/></div>
+      <div class="field"><label>Sender Email</label><input type="email" id="cfg-email" placeholder="hello@yaminalamin.com"/></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Proxy Worker</div>
+    <div class="field"><label>Cloudflare Worker URL</label><input type="text" id="cfg-worker" placeholder="https://claude-proxy.yaminalamin22.workers.dev"/></div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" onclick="saveSettings()">Save Settings</button>
+    <button class="btn" onclick="clearSettings()">Clear All</button>
+  </div>
+  <div id="cfg-status"></div>
+</div>
+
+</main>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script>
-const STORE = 'yamail_v1';
-let importedSubs = [];
-let qsSubject = '';
-let qsBody = '';
-let logs = [];
+const STORE='yamail_v1';
+let importedSubs=[];
+let qsSubject='';
+let qsBody='';
 
-// ─── STORAGE ───
-function getData() {
-  try { return JSON.parse(localStorage.getItem(STORE)) || {}; } catch(e) { return {}; }
-}
-function setData(obj) {
-  const d = getData();
-  localStorage.setItem(STORE, JSON.stringify({...d, ...obj}));
-}
+function getData(){try{return JSON.parse(localStorage.getItem(STORE))||{};}catch(e){return{};}}
+function setData(obj){const d=getData();localStorage.setItem(STORE,JSON.stringify({...d,...obj}));}
 
-// ─── NAV ───
-function showPage(name) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  document.getElementById('page-' + name).classList.add('active');
+function showPage(name){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
   document.querySelector(`[onclick="showPage('${name}')"]`).classList.add('active');
-  if (name === 'subscribers') renderSubscribers();
-  if (name === 'templates') renderTemplates();
-  if (name === 'logs') renderLogs();
-  if (name === 'dashboard') updateStats();
+  if(name==='subscribers')renderSubscribers();
+  if(name==='templates')renderTemplates();
+  if(name==='logs')renderLogs();
+  if(name==='dashboard')updateStats();
 }
 
-// ─── SETTINGS ───
-function saveSettings() {
-  const cfg = {
-    openrouter: document.getElementById('cfg-openrouter').value.trim(),
-    resend: document.getElementById('cfg-resend').value.trim(),
-    senderName: document.getElementById('cfg-name').value.trim(),
-    senderEmail: document.getElementById('cfg-email').value.trim(),
-    worker: document.getElementById('cfg-worker').value.trim().replace(/\/$/,''),
+function saveSettings(){
+  const cfg={
+    openrouter:document.getElementById('cfg-openrouter').value.trim(),
+    resend:document.getElementById('cfg-resend').value.trim(),
+    senderName:document.getElementById('cfg-name').value.trim(),
+    senderEmail:document.getElementById('cfg-email').value.trim(),
+    worker:document.getElementById('cfg-worker').value.trim().replace(/\/$/,''),
   };
-  if (!cfg.openrouter) return setStatus('cfg-status','error','OpenRouter key required.');
-  if (!cfg.resend) return setStatus('cfg-status','error','Resend key required.');
-  if (!cfg.senderEmail) return setStatus('cfg-status','error','Sender email required.');
+  if(!cfg.openrouter)return setStatus('cfg-status','error','OpenRouter key required.');
+  if(!cfg.resend)return setStatus('cfg-status','error','Resend key required.');
+  if(!cfg.senderEmail)return setStatus('cfg-status','error','Sender email required.');
   setData({cfg});
   setStatus('cfg-status','success','Settings saved permanently!');
 }
 
-function clearSettings() {
-  const d = getData(); delete d.cfg;
-  localStorage.setItem(STORE, JSON.stringify(d));
-  ['cfg-openrouter','cfg-resend','cfg-name','cfg-email','cfg-worker'].forEach(id => document.getElementById(id).value = '');
+function clearSettings(){
+  const d=getData();delete d.cfg;
+  localStorage.setItem(STORE,JSON.stringify(d));
+  ['cfg-openrouter','cfg-resend','cfg-name','cfg-email','cfg-worker'].forEach(id=>document.getElementById(id).value='');
   setStatus('cfg-status','info','Settings cleared.');
 }
 
-function loadSettings() {
-  const d = getData();
-  if (!d.cfg) return;
-  const c = d.cfg;
-  if (c.openrouter) document.getElementById('cfg-openrouter').value = c.openrouter;
-  if (c.resend) document.getElementById('cfg-resend').value = c.resend;
-  if (c.senderName) document.getElementById('cfg-name').value = c.senderName;
-  if (c.senderEmail) document.getElementById('cfg-email').value = c.senderEmail;
-  if (c.worker) document.getElementById('cfg-worker').value = c.worker;
+function loadSettings(){
+  const d=getData();
+  if(!d.cfg)return;
+  const c=d.cfg;
+  if(c.openrouter)document.getElementById('cfg-openrouter').value=c.openrouter;
+  if(c.resend)document.getElementById('cfg-resend').value=c.resend;
+  if(c.senderName)document.getElementById('cfg-name').value=c.senderName;
+  if(c.senderEmail)document.getElementById('cfg-email').value=c.senderEmail;
+  if(c.worker)document.getElementById('cfg-worker').value=c.worker;
 }
 
-function getCfg() { return getData().cfg || {}; }
+function getCfg(){return getData().cfg||{};}
 
-// ─── AI ───
-async function callAI(prompt) {
-  const c = getCfg();
-  if (!c.openrouter) throw new Error('OpenRouter key missing. Go to Settings.');
-  const endpoint = c.worker ? c.worker + '?target=openrouter' : 'https://openrouter.ai/api/v1/chat/completions';
-  const res = await fetch(endpoint, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${c.openrouter}`,
-      'HTTP-Referer': 'https://yaminalamin.com',
-      'X-Title': 'YaMail'
-    },
-    body: JSON.stringify({ model: 'openrouter/auto', messages: [{ role: 'user', content: prompt }] })
+async function callAI(prompt){
+  const c=getCfg();
+  if(!c.openrouter)throw new Error('OpenRouter key missing. Go to Settings.');
+  const endpoint=c.worker?c.worker+'?target=openrouter':'https://openrouter.ai/api/v1/chat/completions';
+  const res=await fetch(endpoint,{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':`Bearer ${c.openrouter}`,'HTTP-Referer':'https://yaminalamin.com','X-Title':'YaMail'},
+    body:JSON.stringify({model:'meta-llama/llama-3.1-8b-instruct:free',messages:[{role:'user',content:prompt}]})
   });
-  const data = await res.json();
-  if (!res.ok) throw new Error(data.error?.message || 'AI error');
+  const data=await res.json();
+  if(!res.ok)throw new Error(data.error?.message||'AI error');
   return data.choices[0].message.content;
 }
 
-// ─── EMAIL ───
-async function sendEmail(toEmail, toName, subject, body) {
-  const c = getCfg();
-  if (!c.resend) throw new Error('Resend key missing. Go to Settings.');
-  const endpoint = c.worker ? c.worker + '?target=resend' : 'https://api.resend.com/emails';
-  const res = await fetch(endpoint, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${c.resend}` },
-    body: JSON.stringify({
-      from: `${c.senderName || 'YaMail'} <${c.senderEmail}>`,
-      to: [`${toName} <${toEmail}>`],
+async function sendEmail(toEmail,toName,subject,body){
+  const c=getCfg();
+  if(!c.resend)throw new Error('Resend key missing. Go to Settings.');
+  const endpoint=c.worker?c.worker+'?target=resend':'https://api.resend.com/emails';
+  const res=await fetch(endpoint,{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':`Bearer ${c.resend}`},
+    body:JSON.stringify({
+      from:`${c.senderName||'YaMail'} <${c.senderEmail}>`,
+      to:[`${toName} <${toEmail}>`],
       subject,
-      html: `<div style="font-family:Arial,sans-serif;font-size:15px;line-height:1.8;color:#222;max-width:600px;margin:0 auto;padding:24px;">${body.replace(/\n/g,'<br>')}</div>`
+      html:`<div style="font-family:Arial,sans-serif;font-size:15px;line-height:1.8;color:#222;max-width:600px;margin:0 auto;padding:24px;">${body.replace(/\n/g,'<br>')}</div>`
     })
   });
-  const data = await res.json();
-  if (!res.ok) throw new Error(data.message || data.name || 'Resend error');
+  const data=await res.json();
+  if(!res.ok)throw new Error(data.message||data.name||'Resend error');
 }
 
-function parseEmail(text) {
-  const clean = text.replace(/\*\*/g,'').replace(/\*/g,'').replace(/#{1,6}\s/g,'');
-  const lines = clean.split('\n').filter(l => l.trim());
-  let subject = '', bodyLines = [], pastSubject = false;
-  for (let line of lines) {
-    if (!pastSubject && line.toLowerCase().startsWith('subject:')) {
-      subject = line.replace(/^subject:\s*/i,'').trim(); pastSubject = true;
-    } else if (pastSubject) bodyLines.push(line);
+function parseEmail(text){
+  const clean=text.replace(/\*\*/g,'').replace(/\*/g,'').replace(/#{1,6}\s/g,'');
+  const lines=clean.split('\n').filter(l=>l.trim());
+  let subject='',bodyLines=[],pastSubject=false;
+  for(let line of lines){
+    if(!pastSubject&&line.toLowerCase().startsWith('subject:')){subject=line.replace(/^subject:\s*/i,'').trim();pastSubject=true;}
+    else if(pastSubject)bodyLines.push(line);
   }
-  if (!subject) { subject = lines[0]; bodyLines = lines.slice(1); }
-  return { subject, body: bodyLines.join('\n').trim() };
+  if(!subject){subject=lines[0];bodyLines=lines.slice(1);}
+  return{subject,body:bodyLines.join('\n').trim()};
 }
 
-function makePrompt(name, topic, interest) {
-  const c = getCfg();
-  const tone = 'friendly and warm';
-  return `Write a ${tone} marketing email for ${name}${interest ? ', who is interested in ' + interest : ''}.\nTopic: ${topic}\nFormat: First line must be "Subject: [subject]", then blank line, then email body.\nUnder 150 words. No markdown. Sign off from ${c.senderName || 'Yamin Al Amin'}.`;
+function makePrompt(name,topic,interest){
+  const c=getCfg();
+  return`Write a friendly and warm marketing email for ${name}${interest?', who is interested in '+interest:''}.\nTopic: ${topic}\nFormat: First line must be "Subject: [subject]", then blank line, then email body.\nUnder 150 words. No markdown. Sign off from ${c.senderName||'Yamin Al Amin'}.`;
 }
 
-// ─── QUICK SEND ───
-async function quickGenerate() {
-  const name = document.getElementById('qs-name').value.trim();
-  const topic = document.getElementById('qs-topic').value.trim();
-  if (!name || !topic) return setStatus('qs-status','error','Fill in name and topic.');
+async function quickGenerate(){
+  const name=document.getElementById('qs-name').value.trim();
+  const topic=document.getElementById('qs-topic').value.trim();
+  if(!name||!topic)return setStatus('qs-status','error','Fill in name and topic.');
   setStatus('qs-status','info','Writing email...');
-  document.getElementById('qs-preview').style.display = 'none';
-  try {
-    const text = await callAI(makePrompt(name, topic, ''));
-    const { subject, body } = parseEmail(text);
-    qsSubject = subject; qsBody = body;
-    document.getElementById('qs-subject').textContent = subject;
-    document.getElementById('qs-body').textContent = body;
-    document.getElementById('qs-preview').style.display = 'block';
+  document.getElementById('qs-preview').style.display='none';
+  try{
+    const text=await callAI(makePrompt(name,topic,''));
+    const{subject,body}=parseEmail(text);
+    qsSubject=subject;qsBody=body;
+    document.getElementById('qs-subject').textContent=subject;
+    document.getElementById('qs-body').textContent=body;
+    document.getElementById('qs-preview').style.display='block';
     setStatus('qs-status','success','Email generated! Review then send.');
-  } catch(e) { setStatus('qs-status','error','Error: ' + e.message); }
+  }catch(e){setStatus('qs-status','error','Error: '+e.message);}
 }
 
-async function quickSendPreview() {
-  const toEmail = document.getElementById('qs-email').value.trim();
-  const toName = document.getElementById('qs-name').value.trim();
-  if (!toEmail) return setStatus('qs-send-status','error','Enter recipient email.');
-  const btn = document.getElementById('qs-send-btn');
-  btn.disabled = true; btn.innerHTML = '<span class="spinner"></span>Sending...';
-  try {
-    await sendEmail(toEmail, toName, qsSubject, qsBody);
+async function quickSendPreview(){
+  const toEmail=document.getElementById('qs-email').value.trim();
+  const toName=document.getElementById('qs-name').value.trim();
+  if(!toEmail)return setStatus('qs-send-status','error','Enter recipient email.');
+  const btn=document.getElementById('qs-send-btn');
+  btn.disabled=true;btn.innerHTML='<span class="spinner"></span>Sending...';
+  try{
+    await sendEmail(toEmail,toName,qsSubject,qsBody);
     setStatus('qs-send-status','success',`Sent to ${toEmail}!`);
-    addLog(toName, toEmail, qsSubject, true);
-  } catch(e) {
-    setStatus('qs-send-status','error','Error: ' + e.message);
-    addLog(toName, toEmail, qsSubject, false);
-  } finally { btn.disabled = false; btn.textContent = 'Send This Email'; }
+    addLog(toName,toEmail,qsSubject,true);
+  }catch(e){
+    setStatus('qs-send-status','error','Error: '+e.message);
+    addLog(toName,toEmail,qsSubject,false);
+  }finally{btn.disabled=false;btn.textContent='Send This Email';}
 }
 
-async function quickSend() {
-  const name = document.getElementById('qs-name').value.trim();
-  const email = document.getElementById('qs-email').value.trim();
-  const topic = document.getElementById('qs-topic').value.trim();
-  if (!name || !email || !topic) return setStatus('qs-status','error','Fill in all fields.');
+async function quickSend(){
+  const name=document.getElementById('qs-name').value.trim();
+  const email=document.getElementById('qs-email').value.trim();
+  const topic=document.getElementById('qs-topic').value.trim();
+  if(!name||!email||!topic)return setStatus('qs-status','error','Fill in all fields.');
   setStatus('qs-status','info','Writing & sending...');
-  try {
-    const text = await callAI(makePrompt(name, topic, ''));
-    const { subject, body } = parseEmail(text);
-    await sendEmail(email, name, subject, body);
+  try{
+    const text=await callAI(makePrompt(name,topic,''));
+    const{subject,body}=parseEmail(text);
+    await sendEmail(email,name,subject,body);
     setStatus('qs-status','success',`Sent! Subject: "${subject}"`);
-    addLog(name, email, subject, true);
-  } catch(e) { setStatus('qs-status','error','Error: ' + e.message); }
+    addLog(name,email,subject,true);
+  }catch(e){setStatus('qs-status','error','Error: '+e.message);}
 }
 
-// ─── FILE UPLOAD ───
-function dragOver(e) { e.preventDefault(); document.getElementById('upload-zone').classList.add('dragover'); }
-function dragLeave(e) { document.getElementById('upload-zone').classList.remove('dragover'); }
-function dropFile(e) { e.preventDefault(); dragLeave(e); const f = e.dataTransfer.files[0]; if (f) processFile(f); }
-function handleFile(e) { const f = e.target.files[0]; if (f) processFile(f); }
+function dragOver(e){e.preventDefault();document.getElementById('upload-zone').classList.add('dragover');}
+function dragLeave(e){document.getElementById('upload-zone').classList.remove('dragover');}
+function dropFile(e){e.preventDefault();dragLeave(e);const f=e.dataTransfer.files[0];if(f)processFile(f);}
+function handleFile(e){const f=e.target.files[0];if(f)processFile(f);}
 
-function processFile(file) {
-  const ext = file.name.split('.').pop().toLowerCase();
-  if (ext === 'csv') {
-    const reader = new FileReader();
-    reader.onload = e => parseCSV(e.target.result);
-    reader.readAsText(file);
-  } else if (['xlsx','xls'].includes(ext)) {
-    const reader = new FileReader();
-    reader.onload = e => {
-      const wb = XLSX.read(e.target.result, {type:'array'});
-      const ws = wb.Sheets[wb.SheetNames[0]];
-      const data = XLSX.utils.sheet_to_json(ws, {header:1});
-      parseRows(data);
-    };
-    reader.readAsArrayBuffer(file);
+function processFile(file){
+  const ext=file.name.split('.').pop().toLowerCase();
+  if(ext==='csv'){const r=new FileReader();r.onload=e=>parseCSV(e.target.result);r.readAsText(file);}
+  else if(['xlsx','xls'].includes(ext)){
+    const r=new FileReader();
+    r.onload=e=>{const wb=XLSX.read(e.target.result,{type:'array'});const ws=wb.Sheets[wb.SheetNames[0]];parseRows(XLSX.utils.sheet_to_json(ws,{header:1}));};
+    r.readAsArrayBuffer(file);
   }
 }
 
-function parseCSV(text) {
-  const rows = text.split('\n').map(r => r.split(',').map(c => c.trim().replace(/^"|"$/g,'')));
-  parseRows(rows);
-}
+function parseCSV(text){const rows=text.split('\n').map(r=>r.split(',').map(c=>c.trim().replace(/^"|"$/g,'')));parseRows(rows);}
 
-function parseRows(rows) {
-  const start = rows[0][0]?.toLowerCase().includes('name') ? 1 : 0;
-  importedSubs = rows.slice(start).filter(r => r[1]?.includes('@')).map(r => ({
-    name: r[0]||'', email: r[1]||'', interest: r[2]||''
-  }));
-  if (!importedSubs.length) return setStatus('import-status','error','No valid subscribers found. Use columns: Name, Email, Interest');
+function parseRows(rows){
+  const start=rows[0][0]?.toLowerCase().includes('name')?1:0;
+  importedSubs=rows.slice(start).filter(r=>r[1]?.includes('@')).map(r=>({name:r[0]||'',email:r[1]||'',interest:r[2]||''}));
+  if(!importedSubs.length)return setStatus('import-status','error','No valid subscribers found.');
   setStatus('import-status','success',`Loaded ${importedSubs.length} subscribers!`);
-  const tbody = document.getElementById('imported-table');
-  tbody.innerHTML = importedSubs.slice(0,5).map(s => `<tr><td>${s.name}</td><td>${s.email}</td><td>${s.interest||'—'}</td></tr>`).join('');
-  if (importedSubs.length > 5) tbody.innerHTML += `<tr><td colspan="3" style="color:var(--muted);">...and ${importedSubs.length-5} more</td></tr>`;
-  document.getElementById('imported-preview').style.display = 'block';
+  const tbody=document.getElementById('imported-table');
+  tbody.innerHTML=importedSubs.slice(0,5).map(s=>`<tr><td>${s.name}</td><td>${s.email}</td><td>${s.interest||'—'}</td></tr>`).join('');
+  if(importedSubs.length>5)tbody.innerHTML+=`<tr><td colspan="3" style="color:var(--muted);">...and ${importedSubs.length-5} more</td></tr>`;
+  document.getElementById('imported-preview').style.display='block';
 }
 
-// ─── BULK SEND ───
-async function startBulkSend() {
-  const topic = document.getElementById('campaign-topic').value.trim();
-  const subs = importedSubs.length ? importedSubs : (getData().subscribers || []);
-  if (!subs.length) return setStatus('bulk-status','error','No subscribers loaded. Upload a file or add subscribers first.');
-  if (!topic) return setStatus('bulk-status','error','Enter campaign topic.');
-  const btn = document.getElementById('bulk-btn');
-  btn.disabled = true; btn.innerHTML = '<span class="spinner"></span>Sending...';
-  document.getElementById('progress-bar').style.display = 'block';
-  let sent = 0, failed = 0;
-  for (let i = 0; i < subs.length; i++) {
-    const sub = subs[i];
-    const pct = Math.round(((i+1)/subs.length)*100);
-    document.getElementById('progress-fill').style.width = pct + '%';
-    document.getElementById('bulk-progress').textContent = `${i+1} / ${subs.length}`;
+async function startBulkSend(){
+  const topic=document.getElementById('campaign-topic').value.trim();
+  const subs=importedSubs.length?importedSubs:(getData().subscribers||[]);
+  if(!subs.length)return setStatus('bulk-status','error','No subscribers loaded.');
+  if(!topic)return setStatus('bulk-status','error','Enter campaign topic.');
+  const btn=document.getElementById('bulk-btn');
+  btn.disabled=true;btn.innerHTML='<span class="spinner"></span>Sending...';
+  document.getElementById('progress-bar').style.display='block';
+  let sent=0,failed=0;
+  for(let i=0;i<subs.length;i++){
+    const sub=subs[i];
+    const pct=Math.round(((i+1)/subs.length)*100);
+    document.getElementById('progress-fill').style.width=pct+'%';
+    document.getElementById('bulk-progress').textContent=`${i+1} / ${subs.length}`;
     setStatus('bulk-status','info',`Sending to ${sub.name}...`);
-    try {
-      const text = await callAI(makePrompt(sub.name, topic, sub.interest));
-      const { subject, body } = parseEmail(text);
-      await sendEmail(sub.email, sub.name, subject, body);
-      addLog(sub.name, sub.email, subject, true);
-      sent++;
-    } catch(e) {
-      addLog(sub.name, sub.email, '—', false);
-      failed++;
-    }
-    await new Promise(r => setTimeout(r, 700));
+    try{
+      const text=await callAI(makePrompt(sub.name,topic,sub.interest));
+      const{subject,body}=parseEmail(text);
+      await sendEmail(sub.email,sub.name,subject,body);
+      addLog(sub.name,sub.email,subject,true);sent++;
+    }catch(e){addLog(sub.name,sub.email,'—',false);failed++;}
+    await new Promise(r=>setTimeout(r,700));
   }
-  btn.disabled = false; btn.textContent = 'Start Bulk Send';
-  document.getElementById('bulk-progress').textContent = '';
-  setStatus('bulk-status', sent > 0 ? 'success' : 'error', `Done — ${sent} sent, ${failed} failed.`);
+  btn.disabled=false;btn.textContent='Start Bulk Send';
+  document.getElementById('bulk-progress').textContent='';
+  setStatus('bulk-status',sent>0?'success':'error',`Done — ${sent} sent, ${failed} failed.`);
   updateStats();
 }
 
-// ─── SUBSCRIBERS ───
-function addSubscriber() {
-  const name = document.getElementById('sub-name').value.trim();
-  const email = document.getElementById('sub-email').value.trim();
-  const interest = document.getElementById('sub-interest').value.trim();
-  if (!name || !email) return setStatus('sub-status','error','Name and email required.');
-  const d = getData();
-  const subs = d.subscribers || [];
-  if (subs.find(s => s.email === email)) return setStatus('sub-status','error','This email already exists.');
-  subs.push({name, email, interest, added: new Date().toISOString()});
-  setData({subscribers: subs});
-  document.getElementById('sub-name').value = '';
-  document.getElementById('sub-email').value = '';
-  document.getElementById('sub-interest').value = '';
-  setStatus('sub-status','success',`Added ${name}!`);
-  renderSubscribers();
+function addSubscriber(){
+  const name=document.getElementById('sub-name').value.trim();
+  const email=document.getElementById('sub-email').value.trim();
+  const interest=document.getElementById('sub-interest').value.trim();
+  if(!name||!email)return setStatus('sub-status','error','Name and email required.');
+  const d=getData();const subs=d.subscribers||[];
+  if(subs.find(s=>s.email===email))return setStatus('sub-status','error','Email already exists.');
+  subs.push({name,email,interest,added:new Date().toISOString()});
+  setData({subscribers:subs});
+  document.getElementById('sub-name').value='';document.getElementById('sub-email').value='';document.getElementById('sub-interest').value='';
+  setStatus('sub-status','success',`Added ${name}!`);renderSubscribers();updateStats();
+}
+
+function removeSubscriber(email){const d=getData();setData({subscribers:(d.subscribers||[]).filter(s=>s.email!==email)});renderSubscribers();updateStats();}
+
+function renderSubscribers(){
+  const subs=getData().subscribers||[];
+  document.getElementById('sub-count').textContent=subs.length;
+  const tbody=document.getElementById('sub-table');
+  if(!subs.length){tbody.innerHTML='<tr><td colspan="4" style="text-align:center;color:var(--muted);">No subscribers yet</td></tr>';return;}
+  tbody.innerHTML=subs.map(s=>`<tr><td>${s.name}</td><td>${s.email}</td><td>${s.interest||'—'}</td><td><button class="btn btn-danger" style="padding:4px 10px;font-size:12px;" onclick="removeSubscriber('${s.email}')">Remove</button></td></tr>`).join('');
+}
+
+function saveTemplate(){
+  const name=document.getElementById('tmpl-name').value.trim();
+  const topic=document.getElementById('tmpl-topic').value.trim();
+  if(!name||!topic)return setStatus('tmpl-status','error','Fill in all fields.');
+  const d=getData();const tmpls=d.templates||[];
+  tmpls.push({id:Date.now(),name,topic});
+  setData({templates:tmpls});
+  document.getElementById('tmpl-name').value='';document.getElementById('tmpl-topic').value='';
+  setStatus('tmpl-status','success','Template saved!');renderTemplates();updateStats();
+}
+
+function useTemplate(topic){document.getElementById('campaign-topic').value=topic;showPage('send');}
+function deleteTemplate(id){const d=getData();setData({templates:(d.templates||[]).filter(t=>t.id!==id)});renderTemplates();updateStats();}
+
+function renderTemplates(){
+  const tmpls=getData().templates||[];
+  const el=document.getElementById('tmpl-list');
+  if(!tmpls.length){el.innerHTML='<div style="color:var(--muted);font-size:13px;">No templates yet</div>';return;}
+  el.innerHTML=tmpls.map(t=>`<div class="template-card"><div class="template-name">${t.name}</div><div class="template-preview">${t.topic}</div><div class="btn-row" style="margin-top:10px;"><button class="btn btn-primary" style="padding:6px 14px;font-size:12px;" onclick="useTemplate('${t.topic.replace(/'/g,"\\'")}')">Use in Campaign</button><button class="btn btn-danger" style="padding:6px 14px;font-size:12px;" onclick="deleteTemplate(${t.id})">Delete</button></div></div>`).join('');
+}
+
+function addLog(name,email,subject,ok){
+  const now=new Date();
+  const time=now.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+  const d=getData();const allLogs=d.logs||[];
+  allLogs.unshift({time,name,email,subject,ok});
+  setData({logs:allLogs.slice(0,200)});
   updateStats();
 }
 
-function removeSubscriber(email) {
-  const d = getData();
-  setData({subscribers: (d.subscribers||[]).filter(s => s.email !== email)});
-  renderSubscribers();
-  updateStats();
+function renderLogs(){
+  const allLogs=getData().logs||[];
+  const tbody=document.getElementById('log-table');
+  if(!allLogs.length){tbody.innerHTML='<tr><td colspan="5" style="text-align:center;color:var(--muted);">No logs yet</td></tr>';return;}
+  tbody.innerHTML=allLogs.map(l=>`<tr><td class="mono">${l.time}</td><td>${l.name}</td><td>${l.email}</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${l.subject}</td><td><span class="badge ${l.ok?'badge-success':'badge-error'}">${l.ok?'Sent':'Failed'}</span></td></tr>`).join('');
 }
 
-function renderSubscribers() {
-  const subs = getData().subscribers || [];
-  document.getElementById('sub-count').textContent = subs.length;
-  const tbody = document.getElementById('sub-table');
-  if (!subs.length) { tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--muted);">No subscribers yet</td></tr>'; return; }
-  tbody.innerHTML = subs.map(s => `<tr>
-    <td>${s.name}</td><td>${s.email}</td><td>${s.interest||'—'}</td>
-    <td><button class="btn btn-danger" style="padding:4px 10px;font-size:12px;" onclick="removeSubscriber('${s.email}')">Remove</button></td>
-  </tr>`).join('');
+function clearLogs(){setData({logs:[]});renderLogs();}
+
+function updateStats(){
+  const d=getData();
+  document.getElementById('stat-subscribers').textContent=(d.subscribers||[]).length;
+  document.getElementById('stat-sent').textContent=(d.logs||[]).filter(l=>l.ok).length;
+  document.getElementById('stat-templates').textContent=(d.templates||[]).length;
 }
 
-// ─── TEMPLATES ───
-function saveTemplate() {
-  const name = document.getElementById('tmpl-name').value.trim();
-  const topic = document.getElementById('tmpl-topic').value.trim();
-  if (!name || !topic) return setStatus('tmpl-status','error','Fill in all fields.');
-  const d = getData();
-  const tmpls = d.templates || [];
-  tmpls.push({id: Date.now(), name, topic});
-  setData({templates: tmpls});
-  document.getElementById('tmpl-name').value = '';
-  document.getElementById('tmpl-topic').value = '';
-  setStatus('tmpl-status','success','Template saved!');
-  renderTemplates();
-  updateStats();
-}
+function setStatus(id,type,msg){const el=document.getElementById(id);if(el)el.innerHTML=`<div class="status ${type}">${msg}</div>`;}
 
-function useTemplate(topic) {
-  document.getElementById('campaign-topic').value = topic;
-  showPage('send');
-}
-
-function deleteTemplate(id) {
-  const d = getData();
-  setData({templates: (d.templates||[]).filter(t => t.id !== id)});
-  renderTemplates();
-  updateStats();
-}
-
-function renderTemplates() {
-  const tmpls = getData().templates || [];
-  const el = document.getElementById('tmpl-list');
-  if (!tmpls.length) { el.innerHTML = '<div style="color:var(--muted);font-size:13px;">No templates yet</div>'; return; }
-  el.innerHTML = tmpls.map(t => `<div class="template-card">
-    <div class="template-name">${t.name}</div>
-    <div class="template-preview">${t.topic}</div>
-    <div class="btn-row" style="margin-top:10px;">
-      <button class="btn btn-primary" style="padding:6px 14px;font-size:12px;" onclick="useTemplate('${t.topic.replace(/'/g,"\\'")}')">Use in Campaign</button>
-      <button class="btn btn-danger" style="padding:6px 14px;font-size:12px;" onclick="deleteTemplate(${t.id})">Delete</button>
-    </div>
-  </div>`).join('');
-}
-
-// ─── LOGS ───
-function addLog(name, email, subject, ok) {
-  const now = new Date();
-  const time = now.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
-  logs.unshift({time, name, email, subject, ok});
-  const d = getData();
-  const allLogs = d.logs || [];
-  allLogs.unshift({time, name, email, subject, ok});
-  setData({logs: allLogs.slice(0,200)});
-  updateStats();
-}
-
-function renderLogs() {
-  const allLogs = getData().logs || [];
-  const tbody = document.getElementById('log-table');
-  if (!allLogs.length) { tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--muted);">No logs yet</td></tr>'; return; }
-  tbody.innerHTML = allLogs.map(l => `<tr>
-    <td class="mono">${l.time}</td>
-    <td>${l.name}</td>
-    <td>${l.email}</td>
-    <td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${l.subject}</td>
-    <td><span class="badge ${l.ok ? 'badge-success' : 'badge-error'}">${l.ok ? 'Sent' : 'Failed'}</span></td>
-  </tr>`).join('');
-}
-
-function clearLogs() {
-  setData({logs: []});
-  renderLogs();
-}
-
-// ─── STATS ───
-function updateStats() {
-  const d = getData();
-  document.getElementById('stat-subscribers').textContent = (d.subscribers||[]).length;
-  document.getElementById('stat-sent').textContent = (d.logs||[]).filter(l=>l.ok).length;
-  document.getElementById('stat-templates').textContent = (d.templates||[]).length;
-}
-
-// ─── UTILS ───
-function setStatus(id, type, msg) {
-  const el = document.getElementById(id);
-  if (el) el.innerHTML = `<div class="status ${type}">${msg}</div>`;
-}
-
-// ─── INIT ───
 loadSettings();
 updateStats();
 </script>
