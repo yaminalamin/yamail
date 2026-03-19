@@ -203,7 +203,7 @@ hr{border:none;border-top:1px solid var(--border);margin:1rem 0;}
     </div>
     <div class="info-bar">
       <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-      Replies go to <strong style="margin:0 4px;">hello@yaminalamin.com</strong> — read at <a href="https://mail.hostinger.com" target="_blank" style="color:var(--success);margin-left:2px;">mail.hostinger.com ↗</a>
+      Replies go to <strong style="margin:0 4px;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4c24292020230c352d2125222d202d212522622f2321">[email&#160;protected]</a></strong> — read at <a href="https://mail.hostinger.com" target="_blank" style="color:var(--success);margin-left:2px;">mail.hostinger.com ↗</a>
     </div>
     <div class="card">
       <div class="ct">Quick Send</div>
@@ -426,7 +426,7 @@ hr{border:none;border-top:1px solid var(--border);margin:1rem 0;}
 </main>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script>
 const STORE='yamail_v4';
 let activeCatId=null;
@@ -469,8 +469,11 @@ async function callAI(prompt){
   const ep=c.wk?c.wk+'?target=openrouter':'https://openrouter.ai/api/v1/chat/completions';
   const res=await fetch(ep,{method:'POST',headers:{'Content-Type':'application/json','Authorization':`Bearer ${c.or}`,'HTTP-Referer':'https://yaminalamin.com','X-Title':'YaMail'},
     body:JSON.stringify({model:'meta-llama/llama-3.1-8b-instruct:free',messages:[{role:'user',content:prompt}]})});
-  const data=await res.json();if(!res.ok)throw new Error(data.error?.message||'AI error');
-  return data.choices[0].message.content;
+  const data=await res.json();
+  if(!res.ok)throw new Error(data.error?.message||JSON.stringify(data)||'AI error');
+  if(data.choices&&data.choices[0]&&data.choices[0].message)return data.choices[0].message.content;
+  if(data.content&&data.content[0])return data.content[0].text;
+  throw new Error('Unexpected AI response format: '+JSON.stringify(data).slice(0,200));
 }
 
 // EMAIL
@@ -778,12 +781,4 @@ function clearLogs(){S({logs:[]});renderLogs();}
 function updateStats(){
   const d=D();const cats=d.categories||[];const contacts=d.contacts||{};
   const total=cats.reduce((s,c)=>(s+(contacts[c.id]||[]).length),0);
-  id('stat-contacts').textContent=total;id('stat-cats').textContent=cats.length;
-  id('stat-sent').textContent=(d.logs||[]).filter(l=>l.ok).length;
-  id('stat-templates').textContent=(d.templates||[]).length;
-}
-
-loadSettings();updateStats();
-</script>
-</body>
-</html>
+  id('stat-contacts').textContent=to
